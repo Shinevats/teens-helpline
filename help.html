@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Help | Teens Helpline</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .help-layout {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        @media (max-width: 900px) {
+            .help-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+        /* Chat Interface */
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            height: 600px;
+            padding: 0;
+            overflow: hidden;
+        }
+        .chat-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(0,0,0,0.2);
+        }
+        .bot-avatar {
+            font-size: 2rem;
+            background: var(--surface-color);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .chat-body {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .message {
+            max-width: 80%;
+            padding: 1rem 1.2rem;
+            border-radius: 20px;
+            line-height: 1.4;
+            animation: fadeIn 0.3s ease;
+        }
+        .message.bot {
+            align-self: flex-start;
+            background: var(--surface-color-hover);
+            border-bottom-left-radius: 5px;
+        }
+        .message.user {
+            align-self: flex-end;
+            background: var(--accent-gradient);
+            color: #000;
+            border-bottom-right-radius: 5px;
+            font-weight: 500;
+        }
+        .chat-footer {
+            padding: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            gap: 1rem;
+            background: rgba(0,0,0,0.2);
+        }
+        .chat-input {
+            flex: 1;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid var(--border-color);
+            background: var(--surface-color);
+            color: var(--text-primary);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color var(--transition-fast);
+        }
+        .chat-input:focus {
+            border-color: var(--accent-secondary);
+        }
+        .send-btn {
+            background: var(--accent-secondary);
+            color: #000;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: transform var(--transition-fast);
+        }
+        .send-btn:hover {
+            transform: scale(1.1);
+        }
+        /* Emergency Contacts */
+        .emergency-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .emergency-card {
+            background: rgba(255, 51, 102, 0.1);
+            border: 1px solid rgba(255, 51, 102, 0.3);
+            border-left: 4px solid var(--accent-tertiary);
+        }
+        .emergency-card h3 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .emergency-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent-tertiary);
+            display: block;
+            margin: 0.5rem 0;
+            letter-spacing: 2px;
+        }
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 1rem;
+            align-self: flex-start;
+            background: var(--surface-color-hover);
+            border-radius: 20px;
+            border-bottom-left-radius: 5px;
+            display: none;
+        }
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--text-secondary);
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">✨</span>
+                Teens<span class="text-gradient">Helpline</span>
+            </a>
+            <button class="hamburger">☰</button>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="tracker.html" class="nav-link">Mood Tracker</a></li>
+                <li><a href="resources.html" class="nav-link">Resources</a></li>
+                <li><a href="help.html" class="nav-link btn btn-primary active" style="color: #000;">Get Help 24/7</a></li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+        <section class="section-padding">
+            <div class="container">
+                <div class="fade-in-up">
+                    <h1>You're Safe <span class="text-gradient">Here</span></h1>
+                    <p class="subtitle" style="margin-top: 1rem;">Whether you need to vent or need serious help, there's always someone listening.</p>
+                </div>
+                <div class="help-layout">
+                    <!-- Chat Interface (Mock) -->
+                    <div class="glass-card chat-container fade-in-up delay-1">
+                        <div class="chat-header">
+                            <div class="bot-avatar">🤖</div>
+                            <div>
+                                <h3 style="font-size: 1.1rem; margin-bottom: 0;">Support Bot</h3>
+                                <span style="font-size: 0.8rem; color: var(--accent-secondary);">● Online</span>
+                            </div>
+                        </div>
+                        
+                        <div class="chat-body" id="chatBody">
+                            <div class="message bot">
+                                Hey there! 👋 I'm your safe space companion. You can vent to me about school, friends, or whatever is on your mind. How are you feeling right now?
+                            </div>
+                            
+                            <div class="typing-indicator" id="typingIndicator">
+                                <div class="typing-dot"></div>
+                                <div class="typing-dot"></div>
+                                <div class="typing-dot"></div>
+                            </div>
+                        </div>
+                        <div class="chat-footer">
+                            <input type="text" class="chat-input" id="chatInput" placeholder="Type a message..." autocomplete="off">
+                            <button class="send-btn" id="sendBtn">➤</button>
+                        </div>
+                    </div>
+                    <!-- Real Emergency Contacts -->
+                    <div class="emergency-sidebar fade-in-up delay-2">
+                        <div class="glass-card emergency-card">
+                            <h3>🚨 Immediate Danger?</h3>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary);">If you or someone else is in immediate physical danger.</p>
+                            <span class="emergency-number">911</span>
+                            <a href="tel:911" class="btn btn-outline" style="width: 100%; border-color: var(--accent-tertiary); color: var(--accent-tertiary);">Call Now</a>
+                        </div>
+                        <div class="glass-card" style="border-left: 4px solid var(--accent-primary);">
+                            <h3>💬 Crisis Text Line</h3>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary);">Free, 24/7, confidential text support from a real person.</p>
+                            <span class="emergency-number" style="color: var(--accent-primary);">Text HOME to 741741</span>
+                        </div>
+                        <div class="glass-card" style="border-left: 4px solid var(--accent-secondary);">
+                            <h3>📞 Suicide & Crisis Lifeline</h3>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary);">Free and confidential emotional support 24/7.</p>
+                            <span class="emergency-number" style="color: var(--accent-secondary);">988</span>
+                            <a href="tel:988" class="btn btn-outline" style="width: 100%;">Call 988</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="js/main.js"></script>
+    <script>
+        // Mock Chat Logic
+        const chatInput = document.getElementById('chatInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const chatBody = document.getElementById('chatBody');
+        const typingIndicator = document.getElementById('typingIndicator');
+        const botResponses = [
+            "I hear you. That sounds really tough. It's completely valid to feel that way.",
+            "Take a deep breath. You don't have to have it all figured out right now.",
+            "I'm here for you. Do you want advice, or do you just want to vent?",
+            "That makes a lot of sense. Thanks for sharing that with me.",
+            "Remember, it's okay to put your phone down and take a break today if you need to."
+        ];
+        function addMessage(text, isUser) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `message ${isUser ? 'user' : 'bot'}`;
+            msgDiv.textContent = text;
+            
+            // Insert before typing indicator
+            chatBody.insertBefore(msgDiv, typingIndicator);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+        function handleSend() {
+            const text = chatInput.value.trim();
+            if (!text) return;
+            // Add user message
+            addMessage(text, true);
+            chatInput.value = '';
+            // Show typing indicator
+            typingIndicator.style.display = 'flex';
+            chatBody.scrollTop = chatBody.scrollHeight;
+            // Simulate bot response delay
+            setTimeout(() => {
+                typingIndicator.style.display = 'none';
+                const randomResponse = botResponses[Math.floor(Math.random() * botResponses.length)];
+                
+                // Add conditional safety response
+                const lowerText = text.toLowerCase();
+                if(lowerText.includes('kill') || lowerText.includes('suicide') || lowerText.includes('die')) {
+                    addMessage("I'm so sorry you're in pain. Please know you are not alone. Please text HOME to 741741 or call 988 immediately to talk to someone who can truly help right now.", false);
+                } else {
+                    addMessage(randomResponse, false);
+                }
+            }, 1500);
+        }
+        sendBtn.addEventListener('click', handleSend);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleSend();
+        });
+    </script>
+</body>
+</html>
