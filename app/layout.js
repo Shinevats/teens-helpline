@@ -3,8 +3,8 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 export const metadata = {
-  title: 'Teen Helpline | You are not alone',
-  description: 'A safe digital space for teens to talk, confess, and find resources.',
+  title: 'Youth Helpline | You are not alone',
+  description: 'A safe digital space for youth to talk, confess, and find resources.',
 };
 
 export default function RootLayout({ children }) {

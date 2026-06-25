@@ -9,7 +9,7 @@ export async function generateMetadata({ params }) {
   const article = articles[params.slug];
   if (!article) return { title: 'Article Not Found' };
   return {
-    title: `${article.title} | Teen Helpline`,
+    title: `${article.title} | Youth Helpline`,
     description: article.intro,
   };
 }

@@ -62,7 +62,7 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="nav-container">
         <div className="nav-brand">
-          <Link href="/">Teen Helpline</Link>
+          <Link href="/">Youth Helpline</Link>
         </div>
 
         {/* Desktop links */}
